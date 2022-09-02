@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
 
@@ -13,12 +14,23 @@ public class Main {
         people.add(new Person("Joanne Kathleen", "Rowling", 30));
         people.add(new Person("Katie Scarlett", "OHara Hamilton Kennedy Butler", 100));
         people.add(new Person("Albus Percival", "Wulfric Brian Dumbledore", 99));
+        people.add(new Person("Jane", "Ostin", 16));
+        people.add(new Person("Daniel", "Youngster Daredevil", 10));
+
+
+//        Predicate<Person> minor = (person) -> {
+//            return person.getAge() < 18;
+//        };
+//        people.removeIf((person) -> {
+//            return person.getAge() < 18;
+//        });
+
+        people.removeIf((person) -> person.getAge() < 18);
 
         Collections.sort(people, new NobilityComparator(3));
 
         for (Person person : people) {
             System.out.println(person);
         }
-
     }
 }
